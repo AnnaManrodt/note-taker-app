@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 //our modular routing starts here
 // const routes = require('./routes')
 const fs = require('fs');
-const PORT = procces.env.PORT || 3002;
+const PORT = process.env.PORT || 3002;
 // procces.env.PORT ||
 const app = express();
 

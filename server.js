@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 //our modular routing starts here
 // const routes = require('./routes')
 const fs = require('fs');
-const PORT = 3002;
+const PORT = procces.env.PORT || 3002;
 // procces.env.PORT ||
 const app = express();
 
@@ -50,3 +50,15 @@ app.post('/api/notes', (req, res) =>{
 app.listen(PORT, () => {
     console.log(`Express listening at http://localhost:${PORT}`)
 })
+
+app.delete('/notes/:id', (req, res) => {
+    const id = req.params.id;
+    const index = notes.findIndex(note => note.id === parseInt(id));
+
+    if (index !== -1) {
+        notes.splice(index, 1);
+        res.status(200).send("Note deleted");
+    } else {
+        res.status(404).send('No note found with that ID');
+    }
+});
